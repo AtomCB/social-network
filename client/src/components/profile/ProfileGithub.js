@@ -23,7 +23,7 @@ class ProfileGithub extends Component {
     )
       .then(res => res.json())
       .then(data => {
-        if(this.refs.myRef) {
+        if (this.refs.myRef) {
           this.setState({ repos: data });
         }
       })
@@ -38,7 +38,11 @@ class ProfileGithub extends Component {
         <div className="row">
           <div className="col-md-6">
             <h4>
-              <Link to={repo.html_url} className="text-info" target="_blank" >
+              <Link
+                to={`//:${repo.html_url}`}
+                className="text-info"
+                target="_blank"
+              >
                 {repo.name}
               </Link>
             </h4>
@@ -51,9 +55,7 @@ class ProfileGithub extends Component {
             <span className="badge badge-secondary mr-1">
               Watchers: {repo.watchers}
             </span>
-            <span className="badge badge-success">
-              Forks: {repo.forks}
-            </span>
+            <span className="badge badge-success">Forks: {repo.forks}</span>
           </div>
         </div>
       </div>
@@ -61,7 +63,7 @@ class ProfileGithub extends Component {
 
     return (
       <div ref="myRef">
-        <hr/>
+        <hr />
         <h3 className="mb-4">Latest Github Repos</h3>
         {repoItems}
       </div>
